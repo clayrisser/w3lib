@@ -18,14 +18,26 @@ async function build() {
   await Promise.mapSeries(files, async fileName => {
     if (isDir(fileName)) {
       console.log(fileName);
-      await easycp('parcel', [
-        'build',
-        `src/${fileName}/index.scss`,
-        '-d',
-        'lib',
-        '-o',
-        `${fileName}.css`
-      ]);
+      if (exists(fileName, 'index.scss')) {
+        await easycp('parcel', [
+          'build',
+          `src/${fileName}/index.scss`,
+          '-d',
+          'lib',
+          '-o',
+          `${fileName}.css`
+        ]);
+      }
+      if (exists(fileName, 'index.js')) {
+        await easycp('parcel', [
+          'build',
+          `src/${fileName}/index.js`,
+          '-d',
+          'lib',
+          '-o',
+          `${fileName}.js`
+        ]);
+      }
     }
   });
   await easycp('parcel', [
@@ -36,6 +48,10 @@ async function build() {
     '-o',
     'index.js'
   ]);
+}
+
+function exists(folderName, fileName) {
+  return fs.existsSync(path.resolve(config.rootDir, folderName, fileName));
 }
 
 function isDir(fileName) {

@@ -1,3 +1,10 @@
-import w3lib from './index.scss';
+import styles from './index.scss';
 
-export default w3lib;
+function config(config) {
+  window.w3lib = Object.assign({}, window.w3lib, config);
+}
+
+export default {
+  styles,
+  config
+};

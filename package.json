@@ -1,6 +1,6 @@
 {
   "name": "w3lib",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "W3School inspired components for the web",
   "homepage": "https://github.com/jamrizzi/w3lib",
   "author": {
@@ -9,7 +9,9 @@
     "url": "https://jam.jamrizzi.com"
   },
   "main": "lib/index.js",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "lint": "eslint ./",
     "lint:fix": "eslint --fix ./",
@@ -56,5 +58,10 @@
   "engines": {
     "node": ">= 4.0.0"
   },
-  "eslintIgnore": ["lib", ".tmp", ".cache", "docs"]
+  "eslintIgnore": [
+    "lib",
+    ".tmp",
+    ".cache",
+    "docs"
+  ]
 }
