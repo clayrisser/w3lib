@@ -1,0 +1,60 @@
+{
+  "name": "w3lib",
+  "version": "0.0.1",
+  "description": "W3School inspired components for the web",
+  "homepage": "https://github.com/jamrizzi/w3lib",
+  "author": {
+    "name": "Jam Risser",
+    "email": "jam@jamrizzi.com",
+    "url": "https://jam.jamrizzi.com"
+  },
+  "main": "lib/index.js",
+  "files": ["lib"],
+  "scripts": {
+    "lint": "eslint ./",
+    "lint:fix": "eslint --fix ./",
+    "build": "npm run clean && npm run build:demo && npm run build:css",
+    "build:demo": "parcel build src/index.html -d docs",
+    "build:css": "babel-node src/build",
+    "start": "npm run clean && parcel src/index.html -d .tmp --open --no-hmr",
+    "clean": "rm -rf lib .tmp .cache docs",
+    "prepublish": "npm run build"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "bluebird": "^3.5.1",
+    "easycp": "0.0.2",
+    "eslint": "^4.18.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "lodash": "^4.17.5",
+    "node-sass": "^4.7.2",
+    "parcel-bundler": "^1.6.2"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/jamrizzi/w3lib",
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "4"
+          }
+        }
+      ],
+      "stage-2"
+    ]
+  },
+  "engines": {
+    "node": ">= 4.0.0"
+  },
+  "eslintIgnore": ["lib", ".tmp", ".cache", "docs"]
+}
